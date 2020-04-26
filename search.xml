@@ -13,13 +13,7 @@
       
       <categories>
           
-          <category> 漏洞扫描 </category>
-          
-          <category> Burp suite </category>
-          
-          <category> AWVS </category>
-          
-          <category> 网络安全 </category>
+          <category> 网络安全 - 漏洞扫描 - Burp suite - AWVS </category>
           
       </categories>
       
@@ -38,11 +32,7 @@
       
       <categories>
           
-          <category> SSH </category>
-          
-          <category> 暴力破解 </category>
-          
-          <category> 网络安全 </category>
+          <category> 网络安全 - SSH密码暴力破解 </category>
           
       </categories>
       
