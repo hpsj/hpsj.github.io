@@ -154,31 +154,6 @@
     
     
     <entry>
-      <title>Scrapy爬虫框架—CrawlSpider</title>
-      <link href="/2020/04/27/CrawlSpider%E7%88%AC%E8%99%AB/"/>
-      <url>/2020/04/27/CrawlSpider%E7%88%AC%E8%99%AB/</url>
-      
-        <content type="html"><![CDATA[<h1 id="CrawlSpider"><a href="#CrawlSpider" class="headerlink" title="CrawlSpider"></a>CrawlSpider</h1><p>只要满足某个条件的url，都进行爬取。CrawlSpider 继承自 Spider，只不过是在之前的基础上增加了新的功能，可以定义爬取的url的规则，以后scrapy碰到满足条件的url都进行爬取，而不用 yield Request。</p><h2 id="CrawlSpider爬虫"><a href="#CrawlSpider爬虫" class="headerlink" title="CrawlSpider爬虫"></a>CrawlSpider爬虫</h2><h3 id="创建CrawlSpider爬虫"><a href="#创建CrawlSpider爬虫" class="headerlink" title="创建CrawlSpider爬虫"></a>创建CrawlSpider爬虫</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scrapy genspider -c crawl [爬虫名字] [域名]</span><br><span class="line"></span><br><span class="line">-c crawl：以crawl的模板创建</span><br></pre></td></tr></table></figure><h3 id="LinkExtractors链接提取器"><a href="#LinkExtractors链接提取器" class="headerlink" title="LinkExtractors链接提取器"></a>LinkExtractors链接提取器</h3><p>使用LinkExtractors可以不用程序员自己提取想要的url，然后发送请求。这些工作LinkExtractors可以完成，它会在所有爬虫的页面中找到满足规则的url，实现自动的爬取。以下对LinkExtractors类做简单的介绍：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">scrapy</span>.<span class="title">linkextractors</span>.<span class="title">LinkExtractor</span><span class="params">(</span></span></span><br><span class="line"><span class="class"><span class="params">allow = <span class="params">()</span>,</span></span></span><br><span class="line"><span class="class"><span class="params">    deny = <span class="params">()</span>,</span></span></span><br><span class="line"><span class="class"><span class="params">    allow_domains = <span class="params">()</span>,</span></span></span><br><span class="line"><span class="class"><span class="params">    deny_domains = <span class="params">()</span>,</span></span></span><br><span class="line"><span class="class"><span class="params">    deny_extensions = None,</span></span></span><br><span class="line"><span class="class"><span class="params">    restrict_xpaths = <span class="params">()</span>,</span></span></span><br><span class="line"><span class="class"><span class="params">    tags = <span class="params">(<span class="string">'a'</span>,<span class="string">'area'</span>)</span>,</span></span></span><br><span class="line"><span class="class"><span class="params">    canonicalize = True,</span></span></span><br><span class="line"><span class="class"><span class="params">    unique = True,</span></span></span><br><span class="line"><span class="class"><span class="params">    process_value = None</span></span></span><br><span class="line"><span class="class"><span class="params">)</span></span></span><br></pre></td></tr></table></figure><p>主要参数讲解：</p><ul><li>allow：允许的url。所有满足这个正则表达式的url都会被提取。</li><li>deny：禁止的url。所有满足这个正则表达式的url都不会被提取。</li><li>allow_domains：允许的域名。只有在这个里面指定的域名的url才会被提取。</li><li>deny_domains：禁止的域名。所有在这个里面指定的域名的url都不会被提取。</li><li>restrict_xpaths：严格的xpath。和allow共同过滤连接。</li></ul><h3 id="Rule规则类"><a href="#Rule规则类" class="headerlink" title="Rule规则类"></a>Rule规则类</h3><p>定义爬虫的规则类。一下对Rule类做简单的介绍：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">scrapy</span>.<span class="title">spiders</span>.<span class="title">Rule</span><span class="params">(</span></span></span><br><span class="line"><span class="class"><span class="params">link_extractor,</span></span></span><br><span class="line"><span class="class"><span class="params">    callback = None,</span></span></span><br><span class="line"><span class="class"><span class="params">    cb_kwargs = None,</span></span></span><br><span class="line"><span class="class"><span class="params">    follow = None,</span></span></span><br><span class="line"><span class="class"><span class="params">    process_links = None,</span></span></span><br><span class="line"><span class="class"><span class="params">    process_request = None</span></span></span><br><span class="line"><span class="class"><span class="params">)</span></span></span><br></pre></td></tr></table></figure><p>主要参数讲解：</p><ul><li>link_extractor：一个 LinkExtractor 对象，用于定义爬虫规则。</li><li>callback：满足这个规则的url，应该要执行哪个回调函数。因为CrawlSpider 使用了 parse 作为回调函数，因此不要覆盖 parse 作为回调函数自己的回调函数。</li><li>follow：指定根据该规则从 response 中提取的链接是否需要跟进。</li><li>process_links：从  link_extractor 中获取到链接后会传递这个函数，用来过滤不需要爬取的链接。</li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> python - Scrapy爬虫框架 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> python - Scrapy爬虫框架 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Python之Beautiful Soup库</title>
       <link href="/2020/04/27/Beautiful%20Soup%E5%BA%93/"/>
       <url>/2020/04/27/Beautiful%20Soup%E5%BA%93/</url>
@@ -196,6 +171,31 @@
         <tags>
             
             <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Scrapy爬虫框架—CrawlSpider</title>
+      <link href="/2020/04/27/CrawlSpider%E7%88%AC%E8%99%AB/"/>
+      <url>/2020/04/27/CrawlSpider%E7%88%AC%E8%99%AB/</url>
+      
+        <content type="html"><![CDATA[<h1 id="CrawlSpider"><a href="#CrawlSpider" class="headerlink" title="CrawlSpider"></a>CrawlSpider</h1><p>只要满足某个条件的url，都进行爬取。CrawlSpider 继承自 Spider，只不过是在之前的基础上增加了新的功能，可以定义爬取的url的规则，以后scrapy碰到满足条件的url都进行爬取，而不用 yield Request。</p><h2 id="CrawlSpider爬虫"><a href="#CrawlSpider爬虫" class="headerlink" title="CrawlSpider爬虫"></a>CrawlSpider爬虫</h2><h3 id="创建CrawlSpider爬虫"><a href="#创建CrawlSpider爬虫" class="headerlink" title="创建CrawlSpider爬虫"></a>创建CrawlSpider爬虫</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scrapy genspider -c crawl [爬虫名字] [域名]</span><br><span class="line"></span><br><span class="line">-c crawl：以crawl的模板创建</span><br></pre></td></tr></table></figure><h3 id="LinkExtractors链接提取器"><a href="#LinkExtractors链接提取器" class="headerlink" title="LinkExtractors链接提取器"></a>LinkExtractors链接提取器</h3><p>使用LinkExtractors可以不用程序员自己提取想要的url，然后发送请求。这些工作LinkExtractors可以完成，它会在所有爬虫的页面中找到满足规则的url，实现自动的爬取。以下对LinkExtractors类做简单的介绍：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">scrapy</span>.<span class="title">linkextractors</span>.<span class="title">LinkExtractor</span><span class="params">(</span></span></span><br><span class="line"><span class="class"><span class="params">allow = <span class="params">()</span>,</span></span></span><br><span class="line"><span class="class"><span class="params">    deny = <span class="params">()</span>,</span></span></span><br><span class="line"><span class="class"><span class="params">    allow_domains = <span class="params">()</span>,</span></span></span><br><span class="line"><span class="class"><span class="params">    deny_domains = <span class="params">()</span>,</span></span></span><br><span class="line"><span class="class"><span class="params">    deny_extensions = None,</span></span></span><br><span class="line"><span class="class"><span class="params">    restrict_xpaths = <span class="params">()</span>,</span></span></span><br><span class="line"><span class="class"><span class="params">    tags = <span class="params">(<span class="string">'a'</span>,<span class="string">'area'</span>)</span>,</span></span></span><br><span class="line"><span class="class"><span class="params">    canonicalize = True,</span></span></span><br><span class="line"><span class="class"><span class="params">    unique = True,</span></span></span><br><span class="line"><span class="class"><span class="params">    process_value = None</span></span></span><br><span class="line"><span class="class"><span class="params">)</span></span></span><br></pre></td></tr></table></figure><p>主要参数讲解：</p><ul><li>allow：允许的url。所有满足这个正则表达式的url都会被提取。</li><li>deny：禁止的url。所有满足这个正则表达式的url都不会被提取。</li><li>allow_domains：允许的域名。只有在这个里面指定的域名的url才会被提取。</li><li>deny_domains：禁止的域名。所有在这个里面指定的域名的url都不会被提取。</li><li>restrict_xpaths：严格的xpath。和allow共同过滤连接。</li></ul><h3 id="Rule规则类"><a href="#Rule规则类" class="headerlink" title="Rule规则类"></a>Rule规则类</h3><p>定义爬虫的规则类。一下对Rule类做简单的介绍：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">scrapy</span>.<span class="title">spiders</span>.<span class="title">Rule</span><span class="params">(</span></span></span><br><span class="line"><span class="class"><span class="params">link_extractor,</span></span></span><br><span class="line"><span class="class"><span class="params">    callback = None,</span></span></span><br><span class="line"><span class="class"><span class="params">    cb_kwargs = None,</span></span></span><br><span class="line"><span class="class"><span class="params">    follow = None,</span></span></span><br><span class="line"><span class="class"><span class="params">    process_links = None,</span></span></span><br><span class="line"><span class="class"><span class="params">    process_request = None</span></span></span><br><span class="line"><span class="class"><span class="params">)</span></span></span><br></pre></td></tr></table></figure><p>主要参数讲解：</p><ul><li>link_extractor：一个 LinkExtractor 对象，用于定义爬虫规则。</li><li>callback：满足这个规则的url，应该要执行哪个回调函数。因为CrawlSpider 使用了 parse 作为回调函数，因此不要覆盖 parse 作为回调函数自己的回调函数。</li><li>follow：指定根据该规则从 response 中提取的链接是否需要跟进。</li><li>process_links：从  link_extractor 中获取到链接后会传递这个函数，用来过滤不需要爬取的链接。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> python - Scrapy爬虫框架 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python - Scrapy爬虫框架 </tag>
             
         </tags>
       
