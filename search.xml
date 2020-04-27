@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>微信运动步数修改</title>
+      <link href="/2020/04/27/%E5%BE%AE%E4%BF%A1%E8%BF%90%E5%8A%A8%E6%AD%A5%E6%95%B0%E4%BF%AE%E6%94%B9/"/>
+      <url>/2020/04/27/%E5%BE%AE%E4%BF%A1%E8%BF%90%E5%8A%A8%E6%AD%A5%E6%95%B0%E4%BF%AE%E6%94%B9/</url>
+      
+        <content type="html"><![CDATA[<p>title: 微信运动步数修改</p><p>date: 2020-4-27 14:23:22</p><p>tags: 微信</p><ul><li>漏洞</li></ul><p>categories: 微信</p><p>top_img: </p><p>cover: <a href="http://hp256.gitee.io/blog/Wechat_movement.jpg" target="_blank" rel="noopener">http://hp256.gitee.io/blog/Wechat_movement.jpg</a></p><h1 id="微信运动步数修改"><a href="#微信运动步数修改" class="headerlink" title="微信运动步数修改"></a>微信运动步数修改</h1><p>第一步：下载乐心健康app</p><p><img src="/" class="lazyload" data-src="http://hp256.gitee.io/blog/Wechatm_ovement1.jpg"  alt="Wechatm_ovement1"></p><p>第二步：注册登陆账号</p><p><img src="/" class="lazyload" data-src="http://hp256.gitee.io/blog/Wechatm_ovement2.jpg"  alt="Wechatm_ovement2"></p><p>第三歩：同步第三方数据（同步微信和支付宝的数据）</p><p><img src="/" class="lazyload" data-src="http://hp256.gitee.io/blog/Wechatm_ovement3.jpg"  alt="Wechatm_ovement3"></p><p>第四步：设置手机代理与抓包工具的代理相同</p><p><img src="/" class="lazyload" data-src="http://hp256.gitee.io/blog/Wechatm_ovement4.jpg"  alt="Wechatm_ovement4"></p><p><img src="/" class="lazyload" data-src="G:%5C360MoveData%5CUsers%5CShinelon%5CDesktop%5C%E5%BE%AE%E4%BF%A1%E8%BF%90%E5%8A%A8%E6%AD%A5%E6%95%B0%E4%BF%AE%E6%94%B9%5CWechatm_ovement5.jpg"  alt="Wechatm_ovement5"></p><p>第六步：开启抓包工具，点击乐心健康app（随便点击），观察抓取数据信息。摇晃手机，观察抓去数据是否有步数更新的信息，然后到repeater中修改步数信息。</p><p><img src="/" class="lazyload" data-src="http://hp256.gitee.io/blog/Wechatm_ovement6.jpg"  alt="Wechatm_ovement6"></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>联合查询注入以及报错注入</title>
       <link href="/2020/04/27/%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2%E6%B3%A8%E5%85%A5%E4%BB%A5%E5%8F%8A%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5/"/>
       <url>/2020/04/27/%E8%81%94%E5%90%88%E6%9F%A5%E8%AF%A2%E6%B3%A8%E5%85%A5%E4%BB%A5%E5%8F%8A%E6%8A%A5%E9%94%99%E6%B3%A8%E5%85%A5/</url>
