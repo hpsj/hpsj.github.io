@@ -13,7 +13,7 @@
       
       <categories>
           
-          <category> 支付 </category>
+          <category> SaaS平台 </category>
           
       </categories>
       
@@ -32,7 +32,7 @@
       
       <categories>
           
-          <category> 概览 &amp; 统计 </category>
+          <category> SaaS平台 </category>
           
       </categories>
       
@@ -51,7 +51,7 @@
       
       <categories>
           
-          <category> 问题管理 </category>
+          <category> SaaS平台 </category>
           
       </categories>
       
@@ -70,7 +70,7 @@
       
       <categories>
           
-          <category> 文件管理 </category>
+          <category> SaaS平台 </category>
           
       </categories>
       
@@ -89,7 +89,7 @@
       
       <categories>
           
-          <category> WiKi </category>
+          <category> SaaS平台 </category>
           
       </categories>
       
@@ -108,7 +108,7 @@
       
       <categories>
           
-          <category> 项目的管理 </category>
+          <category> SaaS平台 </category>
           
       </categories>
       
@@ -127,7 +127,7 @@
       
       <categories>
           
-          <category> 项目的开发 </category>
+          <category> SaaS平台 </category>
           
       </categories>
       
@@ -146,9 +146,7 @@
       
       <categories>
           
-          <category> 业务探讨 </category>
-          
-          <category> 任务 </category>
+          <category> SaaS平台 </category>
           
       </categories>
       
@@ -167,7 +165,7 @@
       
       <categories>
           
-          <category> Django离线脚本 </category>
+          <category> SaaS平台 </category>
           
       </categories>
       
@@ -186,7 +184,7 @@
       
       <categories>
           
-          <category> 实现登陆 </category>
+          <category> SaaS平台 </category>
           
       </categories>
       
@@ -205,7 +203,7 @@
       
       <categories>
           
-          <category> 实现注册 </category>
+          <category> SaaS平台 </category>
           
       </categories>
       
